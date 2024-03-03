@@ -2,6 +2,6 @@ Small utility website I made on one of my live streams to teach people about the
 
 This helps you archive your filters in a software agnostic way.
 
-##Screenshot of version 1.1.2
+## Screenshot of version 1.1.2
 ---
 ![Alt text](assets/site-preview.jpg?raw=true "Preview of the raw conversion site.")
