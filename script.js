@@ -2,7 +2,7 @@
  * Author: Viktor Fejes
  * Date: 2024-03-03
  * Description: This file contains the JavaScript code for the online LUT conversion tool.
- * Version: 1.1.3
+ * Version: 1.1.4
  */
 
 const upload = document.getElementById("hald-upload");
