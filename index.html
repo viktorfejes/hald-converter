@@ -18,7 +18,7 @@
 <body>
     <div class="main-container">
         <div class="intro">
-            <h1>Save Your <span class="accent">Filters</span> for Later</h1>
+            <h1>Make Your <span class="accent">Filters</span> universal.</h1>
             <p>Archive your favourite looks as <strong>Colour Lookup Tables</strong>. This way, your filters are not
                 tied to a specific software or plugin.</p>
         </div>
@@ -36,47 +36,73 @@
             <input type="file" name="upload" id="hald-upload" accept="image/png">
             <div class="buttons">
                 <button id="btn-hald" class="hollow">Download Hald</button>
-                <button id="btn-convert" class="disabled">Get Your LUT</button>
+                <span id="btn-na-wrapper" style="cursor: not-allowed;">
+                    <button id="btn-convert" class="disabled">Get Your LUT</button>
+                </span>
             </div>
         </div>
-
-        <p class="author">Made with 💘 by <a href="https://viktorfejes.com">Viktor Fejes</a></p>
 
         <div class="faq"">
-                <h2>FAQ</h2>
-                <div class=" faq-items">
+                <h2 class=" faq-header">FAQ</h2>
+            <div class=" faq-items collapsible collapsed">
 
-            <div class=" faq-item">
-                <h3>What is a Hald?</h3>
-                <p>HALD stands for Hald CLUT, which is a 3D lookup table (LUT) that contains a grid of colours. It is
-                    used
-                    to apply a colour filter to an image. The HALD is a neutral image, meaning it has no colour
-                    information, and is used as a base for the LUT.</p>
-            </div>
-            <div class="faq-item">
-                <h3>What is a LUT?</h3>
-                <p>LUT stands for Look Up Table. It is a table that contains a set of data that is referenced by a
-                    software to apply a colour filter to an image. It is used to apply a colour filter to an image. The
-                    HALD is a neutral image, meaning it has no colour information, and is used as a base for the LUT.
-                </p>
-            </div>
-            <div class="faq-item">
-                <h3>How do I use a LUT?</h3>
-                <p>Most image editing software supports LUTs. You can apply a LUT to an image by importing it into your
-                    software and applying it to your image. The LUT will apply the colour filter to your image.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Privacy Policy?</h3>
-                <p>This converter runs entirely in your browser. No data is sent to any server. The conversion is done
-                    by the JavaScript runtime running on your device. You can check out the source code on <a
-                        href="#">github</a>.
-                </p>
+                <div class="faq-item">
+                    <h3>How do I use this?</h3>
+                    <p>If you don't have a neutral Hald image to use, click on the <strong>Download Hald</strong> button
+                        and use that
+                        as a base for your filters. Once you applied your changes to the Hald image, save it as a .png
+                        file and upload it here. After that, click on the <strong>Get Your LUT</strong> button to
+                        download your .cube
+                        LUT.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3>What is a LUT?</h3>
+                    <p>LUT stands for Look Up Table. To simply put, it is a dictionary that translates input colours to
+                        specified output colours. LUTs are used to apply colour filters to still or moving images.
+                        Thanks to their widespread use, LUTs are supported by most image and video editing software
+                        without having to convert them to a specific format.
+                    </p>
+                </div>
+                <div class=" faq-item">
+                    <h3>What is a Hald?</h3>
+                    <p>
+                        A Hald is a specific type of LUT that uses an image to store colour information. Each pixel in a
+                        Hald lookup-table represents an output RGB colour, the position of the pixel represents the
+                        input or
+                        source colour.
+                    </p>
+                    <p>Hald represents a 3D cube by storing slices of the cube to flatten it into a
+                        2D image. Here, we use a 64x64x64 cube, which results in a 512x512 image.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I use a LUT?</h3>
+                    <p>Most image editing software supports LUTs. You can apply a LUT to an image by importing it into
+                        your
+                        software and applying it to your image. The LUT will apply the colour filter to your image.</p>
+
+                    <p>In Photoshop, you create a new <strong>Color Lookup</strong> adjustment layer, then in its
+                        properties panel click on the <strong>Load 3D LUT...</strong> dropdown and click on the same
+                        option again.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Privacy Policy?</h3>
+                    <p>This converter runs entirely in your browser. No data is sent to any server. The conversion is
+                        done
+                        by the JavaScript runtime running on your device. You can check out the source code on <a
+                            href="#">github</a>.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+
+
+        <p class="author">Made with 💘 by <a href="https://viktorfejes.com">Viktor Fejes</a></p>
     </div>
 
     <script src="script.js"></script>
+    <script src="ui.js"></script>
 </body>
 
 </html>

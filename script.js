@@ -2,12 +2,15 @@
  * Author: Viktor Fejes
  * Date: 2024-03-03
  * Description: This file contains the JavaScript code for the online LUT conversion tool.
+ * Version: 1.1.2
  */
 
 const upload = document.getElementById("hald-upload");
 const btnConvert = document.getElementById("btn-convert");
+const btnWrapper = document.getElementById("btn-na-wrapper");
 const btnHald = document.getElementById("btn-hald");
 const uploadInfo = document.getElementById("upload-info");
+const progressBar = document.getElementsByClassName("progressbar")[0];
 
 upload.addEventListener('change', function () {
     const file = this.files[0];
@@ -18,11 +21,11 @@ upload.addEventListener('change', function () {
         const reader = new FileReader();
 
         reader.onload = function (e) {
+            progressBar.style.width = "0%";
             const img = new Image();
 
             img.onload = function () {
                 const canvas = document.createElement("canvas");
-                // const canvas = document.getElementById("canvas");
                 canvas.width = img.width;
                 canvas.height = img.height;
                 const ctx = canvas.getContext("2d");
@@ -32,38 +35,27 @@ upload.addEventListener('change', function () {
                 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                 const data = imageData.data;
 
-                let cubeData = generateHeaderString(fileNameRoot);
+                const header = generateHeaderString(fileNameRoot);
+                const chunkSize = 100000;
 
-                for (let i = 0; i < data.length; i += 4) {
-                    const R = (data[i] / 255).toFixed(6);
-                    const G = (data[i + 1] / 255).toFixed(6);
-                    const B = (data[i + 2] / 255).toFixed(6);
+                // Callback function to handle the cube data
+                function handleCubeData(cubeData) {
+                    uploadInfo.innerHTML = `✔ Uploaded: ${fileName}`;
+                    btnConvert.style.filter = "blur(0)";
+                    btnConvert.style.pointerEvents = "auto";
+                    btnWrapper.style.cursor = "pointer";
 
-                    cubeData += `${R} ${G} ${B}\n`;
-
-                    // Make progress bar wider
-                    const progressBar = document.getElementsByClassName("progressbar")[0];
-                    progressBar.style.width = `${(i / data.length) * 100}%`;
+                    btnConvert.addEventListener('click', function () {
+                        const link = document.createElement('a');
+                        link.download = "test.cube";
+                        const blob = new Blob([header + cubeData], { type: "text/plain" });
+                        link.href = URL.createObjectURL(blob);
+                        link.click();
+                        link.remove();
+                    });
                 }
-                uploadInfo.innerHTML = `✔ Uploaded: ${fileName}`;
 
-                btnConvert.addEventListener('click', function () {
-
-                    const link = document.createElement('a');
-                    link.download = "test.cube";
-                    const blob = new Blob([cubeData], { type: "text/plain" });
-                    link.href = URL.createObjectURL(blob);
-                    link.click();
-                    link.remove();
-                })
-
-                // btnHald.addEventListener('click', function () {
-                //     const link = document.createElement('a');
-                //     link.download = "test.png";
-                //     link.href = canvas.toDataURL();
-                //     link.click();
-                //     link.remove();
-                // });
+                processDataChunks(data, progressBar, chunkSize, handleCubeData);
             };
             img.src = e.target.result;
         };
@@ -71,6 +63,32 @@ upload.addEventListener('change', function () {
         reader.readAsDataURL(file);
     }
 });
+
+function processDataChunks(data, progressBar, chunkSize, callback) {
+    let i = 0;
+    let cubeDataArray = [];
+
+    function processChunk() {
+        const end = Math.min(i + chunkSize, data.length);
+        for (; i < end; i += 4) {
+            const R = (data[i] / 255).toFixed(6);
+            const G = (data[i + 1] / 255).toFixed(6);
+            const B = (data[i + 2] / 255).toFixed(6);
+
+            cubeDataArray.push(`${R} ${G} ${B}\n`);
+        }
+
+        progressBar.style.width = `${(i / data.length) * 100}%`;
+
+        if (i < data.length) {
+            requestAnimationFrame(processChunk);
+        }
+        else {
+            callback(cubeDataArray.join(""));
+        }
+    }
+    processChunk();
+}
 
 function generateHeaderString(fileNameRoot) {
     return `#Created by: Our Conversion Website

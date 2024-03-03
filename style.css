@@ -18,7 +18,7 @@ body {
 
 .faq {
     max-width: 720px;
-    margin: 100px auto 0 auto;
+    margin: 128px auto 0 auto;
     border-top: 1px solid #eaeaea;
 }
 
@@ -50,11 +50,11 @@ h2 {
     color: #111;
     margin-bottom: 24px;
     cursor: pointer;
+    user-select: none;
 }
 
 h2::after {
-    /* content: "▶"; */
-    content: "▼";
+    content: "▶";
     position: absolute;
     top: 50%;
     right: 0;
@@ -64,6 +64,10 @@ h2::after {
     font-size: 16px;
 }
 
+h2.down::after {
+    content: "▼";
+}
+
 .faq-items {
     display: flex;
     justify-content: space-between;
@@ -71,24 +75,33 @@ h2::after {
     padding-top: 24px;
 }
 
+.collapsible {
+    overflow: hidden;
+    /* display: none; */
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease-out, opacity 0.42s ease-out;
+}
+
 .faq-item {
     border: 1px solid #eaeaea;
     border-radius: 8px;
     padding: 24px;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.16);
+    /* box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.16); */
     margin-bottom: 24px;
     /* max-width: 40%; */
 }
 
 .faq-item p {
     color: #666;
+    line-height: 1.6;
 }
 
 .dotgrid {
     position: absolute;
     top: 20px;
-    left: 20px;
-    width: 66.66%;
+    left: 0;
+    width: 100%;
     height: 100px;
     background-image: radial-gradient(circle at 1px 1px, #888 1px, transparent 0);
     background-size: 20px 20px;
@@ -99,6 +112,7 @@ h2::after {
     width: 0;
     height: 12px;
     background-color: #4e4e4e;
+    background: linear-gradient(109.6deg, #ff1886 11.2%, #fce844 52%, #35b2ef 100.2%);
     border-radius: .33rem;
 }
 
@@ -144,18 +158,24 @@ h1 .accent {
 }
 
 .file-upload {
+    background: #111;
     display: flex;
     justify-content: space-between;
-    border: 1px solid #fff;
+    /* border: 1px solid #fff; */
     border-radius: 12px;
     padding: 4px;
     cursor: pointer;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.16);
+    /* box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.16); */
     margin: 24px auto;
 }
 
+.file-upload button {
+    background-color: #fff;
+    color: #111;
+}
+
 .file-upload p {
-    color: #666;
+    color: #999;
     text-align: center;
     flex: 1;
 }
@@ -183,6 +203,6 @@ button.hollow {
 
 button.disabled {
     filter: blur(4px);
-    /* pointer-events: none; */
-    cursor: not-allowed;
+    pointer-events: none;
+    /* cursor: not-allowed; */
 }
