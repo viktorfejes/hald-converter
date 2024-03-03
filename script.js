@@ -2,7 +2,7 @@
  * Author: Viktor Fejes
  * Date: 2024-03-03
  * Description: This file contains the JavaScript code for the online LUT conversion tool.
- * Version: 1.1.2
+ * Version: 1.1.3
  */
 
 const upload = document.getElementById("hald-upload");
@@ -22,6 +22,8 @@ upload.addEventListener('change', function () {
 
         reader.onload = function (e) {
             progressBar.style.width = "0%";
+            uploadInfo.classList.remove("error");
+            uploadInfo.innerHTML = `Uploading: ${fileName}`;
             const img = new Image();
 
             img.onload = function () {
@@ -34,6 +36,16 @@ upload.addEventListener('change', function () {
 
                 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                 const data = imageData.data;
+
+                const acceptableSize = 512 * 512 * 4;
+                if (data.length !== acceptableSize || canvas.width !== 512 || canvas.height !== 512) {
+                    uploadInfo.innerHTML = `❌ Invalid size: ${fileName}`;
+                    uploadInfo.classList.add("error");
+                    btnConvert.style.filter = "blur(4px)";
+                    btnConvert.style.pointerEvents = "none";
+                    btnWrapper.style.cursor = "not-allowed";
+                    return;
+                }
 
                 const header = generateHeaderString(fileNameRoot);
                 const chunkSize = 100000;

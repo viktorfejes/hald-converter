@@ -180,6 +180,10 @@ h1 .accent {
     flex: 1;
 }
 
+.upload-info.error {
+    color: #ff1886;
+}
+
 button {
     font-family: "Inter", sans-serif;
     font-size: 16px;
