@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Hald to .cube converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="intro">
+            <h1>Save Your <span class="accent">Filters</span> for Later</h1>
+            <p>Archive your favourite looks as <strong>Colour Lookup Tables</strong>. This way, your filters are not
+                tied to a specific software or plugin.</p>
+        </div>
+
+        <div class="dotgrid"></div>
+
+        <div class="interactive">
+            <div class="file-upload" id="upload-trigger">
+                <button class="upload">Upload Hald</button>
+                <p class="upload-info" id="upload-info">Upload your filtered Hald here...</p>
+            </div>
+
+            <div class="progressbar"></div>
+
+            <input type="file" name="upload" id="hald-upload" accept="image/png">
+            <div class="buttons">
+                <button id="btn-hald" class="hollow">Download Hald</button>
+                <button id="btn-convert" class="disabled">Get Your LUT</button>
+            </div>
+        </div>
+
+        <p class="author">Made with 💘 by <a href="https://viktorfejes.com">Viktor Fejes</a></p>
+
+        <div class="faq"">
+                <h2>FAQ</h2>
+                <div class=" faq-items">
+
+            <div class=" faq-item">
+                <h3>What is a Hald?</h3>
+                <p>HALD stands for Hald CLUT, which is a 3D lookup table (LUT) that contains a grid of colours. It is
+                    used
+                    to apply a colour filter to an image. The HALD is a neutral image, meaning it has no colour
+                    information, and is used as a base for the LUT.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is a LUT?</h3>
+                <p>LUT stands for Look Up Table. It is a table that contains a set of data that is referenced by a
+                    software to apply a colour filter to an image. It is used to apply a colour filter to an image. The
+                    HALD is a neutral image, meaning it has no colour information, and is used as a base for the LUT.
+                </p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I use a LUT?</h3>
+                <p>Most image editing software supports LUTs. You can apply a LUT to an image by importing it into your
+                    software and applying it to your image. The LUT will apply the colour filter to your image.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Privacy Policy?</h3>
+                <p>This converter runs entirely in your browser. No data is sent to any server. The conversion is done
+                    by the JavaScript runtime running on your device. You can check out the source code on <a
+                        href="#">github</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

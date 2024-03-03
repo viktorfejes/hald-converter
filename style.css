@@ -1,0 +1,188 @@
+body {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    background-color: #fff;
+}
+
+.main-container {
+    max-width: 1234px;
+    margin: 0 auto;
+    padding: 0 24px;
+    margin-top: 164px;
+}
+
+.interactive {
+    max-width: 720px;
+    margin: 80px auto 0 auto;
+}
+
+.faq {
+    max-width: 720px;
+    margin: 100px auto 0 auto;
+    border-top: 1px solid #eaeaea;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.buttons button {
+    margin: 0 8px;
+}
+
+.buttons button:last-child {
+    margin-right: 0;
+}
+
+h1 {
+    font-size: 64px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+h2 {
+    position: relative;
+    font-size: 28px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+h2::after {
+    /* content: "▶"; */
+    content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: inline-block;
+    color: #111;
+    font-size: 16px;
+}
+
+.faq-items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 24px;
+}
+
+.faq-item {
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.16);
+    margin-bottom: 24px;
+    /* max-width: 40%; */
+}
+
+.faq-item p {
+    color: #666;
+}
+
+.dotgrid {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 66.66%;
+    height: 100px;
+    background-image: radial-gradient(circle at 1px 1px, #888 1px, transparent 0);
+    background-size: 20px 20px;
+    z-index: -1;
+}
+
+.progressbar {
+    width: 0;
+    height: 12px;
+    background-color: #4e4e4e;
+    border-radius: .33rem;
+}
+
+.intro p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #666;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+p strong {
+    font-weight: 600;
+    color: #111;
+}
+
+p.author {
+    margin-top: 52px;
+    font-size: 14px;
+    color: #999;
+    font-weight: 400;
+    text-align: center;
+}
+
+p.author a {
+    color: #111;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+h1 .accent {
+    background: linear-gradient(109.6deg, #ff1886 11.2%, #fce844 52%, #35b2ef 100.2%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+#hald-upload {
+    display: none;
+}
+
+.file-upload {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #fff;
+    border-radius: 12px;
+    padding: 4px;
+    cursor: pointer;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.16);
+    margin: 24px auto;
+}
+
+.file-upload p {
+    color: #666;
+    text-align: center;
+    flex: 1;
+}
+
+button {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    /* text-transform: uppercase; */
+    color: #fff;
+    background-color: #111;
+    border: 1px solid #111;
+    border-radius: .5rem;
+    outline: none;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.hollow {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #111;
+}
+
+button.disabled {
+    filter: blur(4px);
+    /* pointer-events: none; */
+    cursor: not-allowed;
+}
