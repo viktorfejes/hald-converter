@@ -2,7 +2,7 @@
  * Author: Viktor Fejes
  * Date: 2024-03-03
  * Description: This file contains the JavaScript code for the online LUT conversion tool.
- * Version: 1.1.4
+ * Version: 1.1.5
  */
 
 const upload = document.getElementById("hald-upload");
@@ -59,7 +59,7 @@ upload.addEventListener('change', function () {
 
                     btnConvert.addEventListener('click', function () {
                         const link = document.createElement('a');
-                        link.download = "test.cube";
+                        link.download = `${fileNameRoot}.cube`;
                         const blob = new Blob([header + cubeData], { type: "text/plain" });
                         link.href = URL.createObjectURL(blob);
                         link.click();
